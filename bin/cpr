@@ -1,0 +1,56 @@
+#! /usr/bin/env sh
+
+# General setup
+set -ef
+newline='
+'
+IFS=$newline
+
+# Argument processing
+case $1 in
+    -d|--draft)
+        draft_args=--draft
+        action_text='will ultimately resolve'
+        shift
+        ;;
+    *)
+        draft_args=
+        action_text=resolves
+esac
+if [ $# -ne 2 ]
+then
+    echo 'Create pull request'
+    echo 'Usage: cpr [-d | --draft] <issue> <reviewers>'
+    exit 1
+fi >&2
+
+# Data acquisition
+branch=$(git symbolic-ref --short HEAD)
+issue_data=$(gh issue view "$1")
+issue_data_args=$(
+    echo "$issue_data" |
+    sed -ne '
+        /^projects:	/ {
+            s/ ([^(]*),/,/g
+            s/ ([^(]*)$//
+        }
+        /^assignees:	/ s/, /,/g
+        /^labels:	/ s/, /,/g
+        /^projects:	/ s/, /,/g
+        s/^title:	/--title	/
+        s/^assignees:	/--assignee	/
+        s/^labels:	/--label	/
+        s/^projects:	/--project	/
+        s/^milestone:	/--milestone	/
+        s/^\(--.*[^:]\)	\(.\)/\1\'"$newline"'\2/p
+        /^--$/ q
+    '
+)
+
+# Execution
+git push --set-upstream github "$branch"
+gh pr create \
+    $draft_args \
+    $issue_data_args \
+    --reviewer "$2" \
+    --body "This $action_text #$1."

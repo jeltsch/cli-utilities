@@ -1,0 +1,44 @@
+#! /usr/bin/env sh
+
+# General setup
+set -ef
+
+# Argument processing
+if [ $# -ne 0 ]
+then
+    echo 'Merge pull request'
+    echo 'Usage: mpr'
+    exit 1
+fi >&2
+
+# Data acquisition
+branch=$(git symbolic-ref --short HEAD)
+pr_data=$(gh pr view)
+number=$(
+    echo "$pr_data" |
+    sed -ne '
+        /^number:	\([[:digit:]]\{1,\}\)$/ {
+            s/.*:	//p
+            q
+        }
+        /^--$/ q
+    '
+)
+title=$(
+    echo "$pr_data" |
+    sed -ne '
+        /^title:	/ {
+            s/.*:	//p
+            q
+        }
+        /^--$/ q
+    '
+)
+
+# Execution
+gh pr merge \
+    --merge \
+    --delete-branch \
+    --subject "Merge \`$branch\` of pull request #$number into \`master\`" \
+    --body "$title"
+git branch --delete --remotes "github/$branch"

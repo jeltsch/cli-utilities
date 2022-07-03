@@ -1,0 +1,18 @@
+#! /usr/bin/env sh
+
+# General setup
+set -f
+
+# Argument processing
+if [ $# -ne 2 ]
+then
+    echo 'Execute with logging'
+    echo 'Usage: logging <command-string> <log-file>'
+    exit 1
+fi >&2
+
+# Execution
+{
+    sh -c "$1" 2>&1
+    echo "Exit status: $?"
+} | tee "$2"
