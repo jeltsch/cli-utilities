@@ -7,8 +7,8 @@ for others.
 
 ## Requirements
 
-The utilities are expected to be run on a system that has the following
-properties:
+The utilities are expected to be run in an environment that has the
+following properties:
 
   * It conforms to the POSIX standard.
 
@@ -17,6 +17,8 @@ properties:
   * It provides an `env` utility at `/usr/bin/env` that behaves
     according to the POSIX standard when called with a single argument
     that specifies a utility to run.
+
+  * It uses the UTF-8 character encoding.
 
 The `gbu`, `cpr`, and `mpr` utilities additionally require Git, and
 `cpr` and `mpr` furthermore require the [GitHub CLI][github-cli].
