@@ -132,3 +132,34 @@ The remote for the GitHub repository must have the name `github`. The
 subject line of the created merge commit uses better wording than the
 one that GitHub would produce and furthermore uses Markdown syntax. The
 body of the created merge commit is the title of the pull request.
+
+
+### `hle` – Haskell language extensions
+
+```
+hle [⟨haskell-module-file⟩...]
+```
+
+Search for all `LANGUAGE` pragmas in the specified Haskell module files
+or, if no operands are given, in a Haskell module read from standard
+input and write an alphabetically sorted list of all language extensions
+enabled by these pragmas to standard output.
+
+Of each Haskell module, only the part until the first lexeme is
+considered. The processing of this part is subject to the following
+constraints:
+
+  * The control character sequences `⟨CR⟩` and `⟨CR⟩⟨LF⟩` are not
+    guaranteed to be recognized as newlines and thus whitespace. On
+    systems conforming to the POSIX standard, they are not treated as
+    whitespace; on Cygwin, `⟨CR⟩⟨LF⟩` might be treated as whitespace,
+    and `⟨LF⟩` might not.
+
+  * For deciding whether a certain character is a Unicode whitespace
+    character, the whitespace definition of Unicode 14.0.0 is used.
+
+  * Nested comments are not supported, that is, between a pair of `{-`
+    and `-}`, no other pair of `{-` and `-}` may occur. This also
+    applies to pragmas.
+
+  * The layout rule is not applied to pragmas.

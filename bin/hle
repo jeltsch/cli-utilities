@@ -1,0 +1,47 @@
+#! /usr/bin/env sh
+
+# General setup
+set -e
+newline='
+'
+whitechar="[	\n               　]"
+language='[Ll][Aa][Nn][Gg][Uu][Aa][Gg][Ee]'
+
+# Data acquisition
+raw_extensions_list=$(
+    for file in "$@"
+    do
+        sed -ne '
+            :start
+            s/^'"$whitechar*"'//
+            /^$/ d
+            /^-- / d
+            /^{-/ !q
+            :eoc-scan
+            /-}/ !{
+                N
+                b eoc-scan
+            }
+            h
+            s/-}.*//
+            /^{-#'"$whitechar*$language$whitechar"'.*#$/ {
+                s/{-#'"$whitechar*$language$whitechar*"'//
+                s/'"$whitechar*"'#$//
+                s/'"$whitechar*,$whitechar*"'/\'"$newline"'/g
+                p
+            }
+            g
+            s/{-//
+            :rm-cc
+            /^-}/ !{
+                s/.[^-]*//
+                b rm-cc
+            }
+            s/-}//
+            b start
+        ' "$file"
+    done
+)
+
+# Execution
+echo "$raw_extensions_list" | sort -u
