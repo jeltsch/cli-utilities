@@ -4,7 +4,7 @@
 set -e
 newline='
 '
-whitechar="[	\n               　]"
+whitechar="[	               　]"
 language='[Ll][Aa][Nn][Gg][Uu][Aa][Gg][Ee]'
 
 # Data acquisition
@@ -24,6 +24,7 @@ raw_extensions_list=$(
             }
             h
             s/-}.*//
+            s/\n/ /g
             /^{-#'"$whitechar*$language$whitechar"'.*#$/ {
                 s/{-#'"$whitechar*$language$whitechar*"'//
                 s/'"$whitechar*"'#$//
