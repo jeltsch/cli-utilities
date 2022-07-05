@@ -7,7 +7,7 @@ set -ef
 if [ $# -ne 1 ]
 then
     echo 'Get branch updates'
-    echo 'Usage: gbu <other-branch>'
+    echo 'Usage: gbu ⟨other-branch⟩'
     exit 1
 fi >&2
 

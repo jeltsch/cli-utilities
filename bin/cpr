@@ -20,7 +20,7 @@ esac
 if [ $# -ne 2 ]
 then
     echo 'Create pull request'
-    echo 'Usage: cpr [-d | --draft] <issue> <reviewers>'
+    echo 'Usage: cpr [-d | --draft] ⟨issue⟩ ⟨reviewers⟩'
     exit 1
 fi >&2
 
