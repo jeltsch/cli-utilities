@@ -9,7 +9,7 @@ IFS='
 if [ $# -ne 2 ]
 then
     echo 'Do in directories'
-    echo 'Usage: did <directory-list> <command-string>'
+    echo 'Usage: did ⟨directory-list⟩ ⟨command-string⟩'
     exit 1
 fi >&2
 
