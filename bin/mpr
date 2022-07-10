@@ -12,6 +12,10 @@ then
 fi >&2
 
 # Data acquisition
+main=$(
+    gh repo view --json defaultBranchRef |
+    sed -ne 's/^{"defaultBranchRef":{"name":"\(.[^"]*\)"}}$/\1/p'
+)
 branch=$(git symbolic-ref --short HEAD)
 pr_data=$(gh pr view)
 number=$(
@@ -36,9 +40,12 @@ title=$(
 )
 
 # Execution
-gh pr merge \
-    --merge \
-    --delete-branch \
-    --subject "Merge \`$branch\` of pull request #$number into \`master\`" \
-    --body "$title"
+git checkout "$main"
+git merge \
+    --no-ff \
+    -m "Merge \`$branch\` of pull request #$number into \`$main\`" \
+    -m "$title" \
+    "$branch"
+git push
 git branch --delete --remotes "github/$branch"
+git branch --delete "$branch"
