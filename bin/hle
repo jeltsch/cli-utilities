@@ -53,4 +53,4 @@ raw_extensions_list=$(
 )
 
 # Execution
-echo "$raw_extensions_list" | sort -u
+echo "$raw_extensions_list" | grep . | sort -u
