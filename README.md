@@ -125,8 +125,8 @@ is used.
 mpr
 ```
 
-Merge a GitHub pull request and delete its remote branch,
-remote-tracking branch, and local branch.
+Merge a GitHub pull request and delete its remote-tracking branch and
+its local branch.
 
 The remote for the GitHub repository must have the name `github`. The
 subject line of the created merge commit uses better wording than the
