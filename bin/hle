@@ -6,42 +6,50 @@ newline='
 '
 whitechar="[	               　]"
 language='[Ll][Aa][Nn][Gg][Uu][Aa][Gg][Ee]'
+extract_extensions () {
+    sed -ne '
+        :start
+        s/^'"$whitechar*"'//
+        /^$/ d
+        /^-- / d
+        /^{-/ !q
+        :eoc-scan
+        /-}/ !{
+            N
+            b eoc-scan
+        }
+        h
+        s/-}.*//
+        s/\n/ /g
+        /^{-#'"$whitechar*$language$whitechar"'.*#$/ {
+            s/{-#'"$whitechar*$language$whitechar*"'//
+            s/'"$whitechar*"'#$//
+            s/'"$whitechar*,$whitechar*"'/\'"$newline"'/g
+            p
+        }
+        g
+        s/{-//
+        :rm-cc
+        /^-}/ !{
+            s/.[^-]*//
+            b rm-cc
+        }
+        s/-}//
+        b start
+    '
+}
 
 # Data acquisition
 raw_extensions_list=$(
-    for file in "$@"
-    do
-        sed -ne '
-            :start
-            s/^'"$whitechar*"'//
-            /^$/ d
-            /^-- / d
-            /^{-/ !q
-            :eoc-scan
-            /-}/ !{
-                N
-                b eoc-scan
-            }
-            h
-            s/-}.*//
-            s/\n/ /g
-            /^{-#'"$whitechar*$language$whitechar"'.*#$/ {
-                s/{-#'"$whitechar*$language$whitechar*"'//
-                s/'"$whitechar*"'#$//
-                s/'"$whitechar*,$whitechar*"'/\'"$newline"'/g
-                p
-            }
-            g
-            s/{-//
-            :rm-cc
-            /^-}/ !{
-                s/.[^-]*//
-                b rm-cc
-            }
-            s/-}//
-            b start
-        ' "$file"
-    done
+    if [ $# -eq 0 ]
+    then
+        extract_extensions
+    else
+        for file in "$@"
+        do
+            cat "$file" | extract_extensions
+        done
+    fi
 )
 
 # Execution
