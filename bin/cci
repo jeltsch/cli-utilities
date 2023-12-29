@@ -1,0 +1,36 @@
+#! /usr/bin/env sh
+
+
+# General setup
+
+set -e
+
+
+# Argument processing
+
+if [ $# -ne 1 ]
+then
+    echo 'Create commit for issue'
+    echo 'Usage: cci ⟨issue⟩'
+    exit 1
+fi >&2
+
+
+# Data acquisition
+
+issue_data=$(gh issue view "$1")
+title=$(
+    echo "$issue_data" |
+    sed -ne '
+        /^title:	/ {
+            s/.*:	//p
+            q
+        }
+        /^--$/ q
+    '
+)
+
+
+# Execution
+
+git commit --message="$title"

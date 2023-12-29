@@ -74,6 +74,16 @@ copy of all data sent to standard output and standard error into
 `⟨log-file⟩`, along with an information about the shell’s exit status.
 
 
+### `cci` – Create commit for issue
+
+```
+cci ⟨issue⟩
+```
+
+Creates a commit that has the title of `⟨issue⟩` as its subject line and
+an empty body.
+
+
 ### `gbu` – Get branch updates
 
 ```
