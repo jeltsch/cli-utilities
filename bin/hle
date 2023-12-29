@@ -47,7 +47,7 @@ raw_extensions_list=$(
     else
         for file in "$@"
         do
-            cat "$file" | extract_extensions
+            extract_extensions <$file
         done
     fi
 )
