@@ -1,12 +1,17 @@
 #! /usr/bin/env sh
 
+
 # General setup
+
 set -ef
+
 newline='
 '
 IFS=$newline
 
+
 # Argument processing
+
 case $1 in
     -d|--draft)
         draft_args=--draft
@@ -17,6 +22,7 @@ case $1 in
         draft_args=
         action_text=resolves
 esac
+
 if [ $# -ne 2 ]
 then
     echo 'Create pull request'
@@ -24,7 +30,9 @@ then
     exit 1
 fi >&2
 
+
 # Data acquisition
+
 branch=$(git symbolic-ref --short HEAD)
 issue_data=$(gh issue view "$1")
 issue_data_args=$(
@@ -47,7 +55,9 @@ issue_data_args=$(
     '
 )
 
+
 # Execution
+
 git push --set-upstream github "$branch"
 gh pr create \
     $draft_args \

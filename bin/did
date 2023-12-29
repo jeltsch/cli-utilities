@@ -1,11 +1,16 @@
 #! /usr/bin/env sh
 
+
 # General setup
+
 set -e
+
 IFS='
 '
 
+
 # Argument processing
+
 if [ $# -ne 2 ]
 then
     echo 'Do in directories'
@@ -13,9 +18,12 @@ then
     exit 1
 fi >&2
 
+
 # Data acquisition
+
 dirs=$(grep -e '^[^#]' "$HOME/.config/did/$1")
 relative_dirs=$(echo "$dirs" | { grep -e '^[^/]' || true; })
+
 if [ -n "$relative_dirs" ]
 then
     echo 'Directory paths must be absolute'
@@ -24,7 +32,9 @@ then
     exit 1
 fi >&2
 
+
 # Execution
+
 for dir in $dirs
 do
     cd "$dir"

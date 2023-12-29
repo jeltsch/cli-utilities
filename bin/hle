@@ -1,11 +1,15 @@
 #! /usr/bin/env sh
 
+
 # General setup
+
 set -e
+
 newline='
 '
 whitechar="[	               　]"
 language='[Ll][Aa][Nn][Gg][Uu][Aa][Gg][Ee]'
+
 extract_extensions () {
     sed -ne '
         :start
@@ -39,7 +43,9 @@ extract_extensions () {
     '
 }
 
+
 # Data acquisition
+
 raw_extensions_list=$(
     if [ $# -eq 0 ]
     then
@@ -52,5 +58,7 @@ raw_extensions_list=$(
     fi
 )
 
+
 # Execution
+
 echo "$raw_extensions_list" | grep . | sort -u
