@@ -23,4 +23,4 @@ branch=$(git symbolic-ref --short HEAD)
 
 # Execution
 
-git merge --no-ff -m "Merge \`$1\` into \`$branch\`" "$1"
+git merge --no-ff --message="Merge \`$1\` into \`$branch\`" "$1"
