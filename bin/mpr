@@ -18,8 +18,9 @@ fi >&2
 
 # Data acquisition
 
+main_json=$(gh repo view --json defaultBranchRef)
 main=$(
-    gh repo view --json defaultBranchRef |
+    echo "$main_json" |
     sed -ne 's/^{"defaultBranchRef":{"name":"\(.[^"]*\)"}}$/\1/p'
 )
 branch=$(git symbolic-ref --short HEAD)
