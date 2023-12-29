@@ -1,9 +1,13 @@
 #! /usr/bin/env sh
 
+
 # General setup
+
 set -ef
 
+
 # Argument processing
+
 if [ $# -ne 1 ]
 then
     echo 'Get branch updates'
@@ -11,8 +15,12 @@ then
     exit 1
 fi >&2
 
+
 # Data acquisition
+
 branch=$(git symbolic-ref --short HEAD)
 
+
 # Execution
+
 git merge --no-ff -m "Merge \`$1\` into \`$branch\`" "$1"
