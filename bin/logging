@@ -1,11 +1,6 @@
 #! /usr/bin/env sh
 
 
-# General setup
-
-set -f
-
-
 # Argument processing
 
 if [ $# -ne 2 ]

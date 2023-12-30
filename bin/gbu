@@ -3,7 +3,7 @@
 
 # General setup
 
-set -ef
+set -e
 
 
 # Argument processing
