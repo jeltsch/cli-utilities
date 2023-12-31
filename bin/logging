@@ -16,4 +16,4 @@ fi >&2
 {
     "$SHELL" -c "$1" 2>&1
     echo "Exit status: $?"
-} | tee "$2"
+} >$2
