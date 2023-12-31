@@ -10,7 +10,8 @@ newline='
 whitechar="[	               　]"
 language='[Ll][Aa][Nn][Gg][Uu][Aa][Gg][Ee]'
 
-extract_extensions () {
+extract_extensions ()
+{
     sed -ne '
         :start
         s/^'"$whitechar*"'//
