@@ -69,9 +69,9 @@ this pathname as the working directory, using the user’s default shell.
 logging ⟨command-string⟩ ⟨log-file⟩
 ```
 
-Execute `⟨command-string⟩` using the user’s default shell and write a
-copy of all data sent to standard output and standard error into
-`⟨log-file⟩`, along with an information about the shell’s exit status.
+Execute `⟨command-string⟩` using the user’s default shell, with standard
+output and standard error being redirected to `⟨log-file⟩`, and finally
+write an information about the shell’s exit status to `⟨log-file⟩`.
 
 
 ### `cci` – Create commit for issue
