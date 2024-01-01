@@ -26,7 +26,7 @@ main=$(
 branch=$(git symbolic-ref --short HEAD)
 pr_data=$(gh pr view)
 number=$(
-    echo "$pr_data" |
+    printf '%s\n' "$pr_data" |
     sed -ne '
         /^number:	\([[:digit:]]\{1,\}\)$/ {
             s/.*:	//p
@@ -36,7 +36,7 @@ number=$(
     '
 )
 title=$(
-    echo "$pr_data" |
+    printf '%s\n' "$pr_data" |
     sed -ne '
         /^title:	/ {
             s/.*:	//p
