@@ -20,7 +20,7 @@ fi >&2
 
 issue_data=$(gh issue view "$1")
 title=$(
-    echo "$issue_data" |
+    printf '%s\n' "$issue_data" |
     sed -ne '
         /^title:	/ {
             s/.*:	//p

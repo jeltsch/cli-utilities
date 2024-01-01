@@ -36,7 +36,7 @@ fi >&2
 branch=$(git symbolic-ref --short HEAD)
 issue_data=$(gh issue view "$1")
 issue_data_args=$(
-    echo "$issue_data" |
+    printf '%s\n' "$issue_data" |
     sed -ne '
         /^projects:	/ {
             s/ ([^(]*),/,/g
