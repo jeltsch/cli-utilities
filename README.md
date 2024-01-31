@@ -21,7 +21,7 @@ following properties:
   * It uses the UTF-8 character encoding.
 
 Some of the utilities require additional software to be installed, which
-is stated in their documentation.
+is specified in their documentation.
 
 
 ## Installation
