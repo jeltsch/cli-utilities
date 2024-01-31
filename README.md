@@ -80,8 +80,8 @@ write an information about the shell’s exit status to `⟨log-file⟩`.
 cci ⟨issue⟩
 ```
 
-Creates a commit that has the title of `⟨issue⟩` as its subject line and
-an empty body.
+Creates a commit that has the title of the GitHub issue with number
+`⟨issue⟩` as its subject line and an empty body.
 
 
 ### `gbu` – Get branch updates
