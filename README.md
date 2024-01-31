@@ -20,12 +20,8 @@ following properties:
 
   * It uses the UTF-8 character encoding.
 
-The `gbu`, `cpr`, and `mpr` utilities additionally require Git, and
-`cpr` and `mpr` furthermore require the [GitHub CLI][github-cli].
-
-[github-cli]:
-    https://cli.github.com/
-    "GitHub CLI"
+Some of the utilities require additional software to be installed, which
+is specified in their documentation.
 
 
 ## Installation
@@ -35,6 +31,10 @@ this package to the `PATH` environment variable.
 
 
 ## The utilities in detail
+
+[github-cli]:
+    https://cli.github.com/
+    "GitHub CLI"
 
 
 ### `did` – Do in directories
@@ -83,6 +83,8 @@ cci ⟨issue⟩
 Creates a commit that has the title of the GitHub issue with number
 `⟨issue⟩` as its subject line and an empty body.
 
+**Additionally required software:** Git, [GitHub CLI][github-cli]
+
 
 ### `gbu` – Get branch updates
 
@@ -100,6 +102,8 @@ following ways:
 
   * It produces a more concise commit subject line, which furthermore
     uses Markdown syntax.
+
+**Additionally required software:** Git
 
 
 ### `cpr` – Create pull request
@@ -128,6 +132,8 @@ This resolves #⟨issue⟩.
 ```
 is used.
 
+**Additionally required software:** Git, [GitHub CLI][github-cli]
+
 
 ### `mpr` – Merge pull request
 
@@ -142,6 +148,8 @@ The remote for the GitHub repository must have the name `github`. The
 subject line of the created merge commit uses better wording than the
 one that GitHub would produce and furthermore uses Markdown syntax. The
 body of the created merge commit is the title of the pull request.
+
+**Additionally required software:** Git, [GitHub CLI][github-cli]
 
 
 ### `hle` – Haskell language extensions
