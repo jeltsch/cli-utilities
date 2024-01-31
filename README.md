@@ -80,10 +80,10 @@ write an information about the shell’s exit status to `⟨log-file⟩`.
 cci ⟨issue⟩
 ```
 
-**Additional requirements:** Git, [GitHub CLI][github-cli]
-
 Creates a commit that has the title of the GitHub issue with number
 `⟨issue⟩` as its subject line and an empty body.
+
+**Additional requirements:** Git, [GitHub CLI][github-cli]
 
 
 ### `gbu` – Get branch updates
@@ -91,8 +91,6 @@ Creates a commit that has the title of the GitHub issue with number
 ```
 gbu ⟨other-branch⟩
 ```
-
-**Additional requirements:** Git
 
 Merges the Git branch `⟨other-branch⟩` into the current Git branch.
 
@@ -105,14 +103,14 @@ following ways:
   * It produces a more concise commit subject line, which furthermore
     uses Markdown syntax.
 
+**Additional requirements:** Git
+
 
 ### `cpr` – Create pull request
 
 ```
 cpr [-d | --draft] ⟨issue⟩ ⟨reviewers⟩
 ```
-
-**Additional requirements:** Git, [GitHub CLI][github-cli]
 
 Push the current Git branch to GitHub, set its upstream reference
 accordingly, and create a GitHub pull request for it.
@@ -134,14 +132,14 @@ This resolves #⟨issue⟩.
 ```
 is used.
 
+**Additional requirements:** Git, [GitHub CLI][github-cli]
+
 
 ### `mpr` – Merge pull request
 
 ```
 mpr
 ```
-
-**Additional requirements:** Git, [GitHub CLI][github-cli]
 
 Merge a GitHub pull request and delete its remote-tracking branch and
 its local branch.
@@ -150,6 +148,8 @@ The remote for the GitHub repository must have the name `github`. The
 subject line of the created merge commit uses better wording than the
 one that GitHub would produce and furthermore uses Markdown syntax. The
 body of the created merge commit is the title of the pull request.
+
+**Additional requirements:** Git, [GitHub CLI][github-cli]
 
 
 ### `hle` – Haskell language extensions
