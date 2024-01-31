@@ -20,12 +20,8 @@ following properties:
 
   * It uses the UTF-8 character encoding.
 
-The `gbu`, `cpr`, and `mpr` utilities additionally require Git, and
-`cpr` and `mpr` furthermore require the [GitHub CLI][github-cli].
-
-[github-cli]:
-    https://cli.github.com/
-    "GitHub CLI"
+Some of the utilities have additional requirements, which are stated in
+their documentation.
 
 
 ## Installation
@@ -35,6 +31,10 @@ this package to the `PATH` environment variable.
 
 
 ## The utilities in detail
+
+[github-cli]:
+    https://cli.github.com/
+    "GitHub CLI"
 
 
 ### `did` – Do in directories
@@ -80,6 +80,8 @@ write an information about the shell’s exit status to `⟨log-file⟩`.
 cci ⟨issue⟩
 ```
 
+**Additional requirements:** Git, [GitHub CLI][github-cli]
+
 Creates a commit that has the title of the GitHub issue with number
 `⟨issue⟩` as its subject line and an empty body.
 
@@ -89,6 +91,8 @@ Creates a commit that has the title of the GitHub issue with number
 ```
 gbu ⟨other-branch⟩
 ```
+
+**Additional requirements:** Git
 
 Merges the Git branch `⟨other-branch⟩` into the current Git branch.
 
@@ -107,6 +111,8 @@ following ways:
 ```
 cpr [-d | --draft] ⟨issue⟩ ⟨reviewers⟩
 ```
+
+**Additional requirements:** Git, [GitHub CLI][github-cli]
 
 Push the current Git branch to GitHub, set its upstream reference
 accordingly, and create a GitHub pull request for it.
@@ -134,6 +140,8 @@ is used.
 ```
 mpr
 ```
+
+**Additional requirements:** Git, [GitHub CLI][github-cli]
 
 Merge a GitHub pull request and delete its remote-tracking branch and
 its local branch.
