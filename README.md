@@ -109,7 +109,7 @@ following ways:
 ### `cpr` – Create pull request
 
 ```
-cpr [-d | --draft] ⟨issue⟩ ⟨reviewers⟩
+cpr [-d|--draft] ⟨issue⟩ ⟨reviewers⟩
 ```
 
 Push the current Git branch to GitHub, set its upstream reference
