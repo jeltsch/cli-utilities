@@ -20,8 +20,8 @@ following properties:
 
   * It uses the UTF-8 character encoding.
 
-Some of the utilities have additional requirements, which are stated in
-their documentation.
+Some of the utilities require additional software to be installed, which
+is stated in their documentation.
 
 
 ## Installation
@@ -83,7 +83,7 @@ cci ⟨issue⟩
 Creates a commit that has the title of the GitHub issue with number
 `⟨issue⟩` as its subject line and an empty body.
 
-**Additional requirements:** Git, [GitHub CLI][github-cli]
+**Additionally required software:** Git, [GitHub CLI][github-cli]
 
 
 ### `gbu` – Get branch updates
@@ -103,7 +103,7 @@ following ways:
   * It produces a more concise commit subject line, which furthermore
     uses Markdown syntax.
 
-**Additional requirements:** Git
+**Additionally required software:** Git
 
 
 ### `cpr` – Create pull request
@@ -132,7 +132,7 @@ This resolves #⟨issue⟩.
 ```
 is used.
 
-**Additional requirements:** Git, [GitHub CLI][github-cli]
+**Additionally required software:** Git, [GitHub CLI][github-cli]
 
 
 ### `mpr` – Merge pull request
@@ -149,7 +149,7 @@ subject line of the created merge commit uses better wording than the
 one that GitHub would produce and furthermore uses Markdown syntax. The
 body of the created merge commit is the title of the pull request.
 
-**Additional requirements:** Git, [GitHub CLI][github-cli]
+**Additionally required software:** Git, [GitHub CLI][github-cli]
 
 
 ### `hle` – Haskell language extensions
