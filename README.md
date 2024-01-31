@@ -69,8 +69,8 @@ this pathname as the working directory, using the user’s default shell.
 logging ⟨command-string⟩ ⟨log-file⟩
 ```
 
-Execute `⟨command-string⟩` using the user’s default shell, with standard
-output and standard error being redirected to `⟨log-file⟩`, and finally
+Execute `⟨command-string⟩` using the user’s default shell with standard
+output and standard error being redirected to `⟨log-file⟩` and finally
 write an information about the shell’s exit status to `⟨log-file⟩`.
 
 
