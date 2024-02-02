@@ -170,8 +170,8 @@ constraints:
   * The control character sequences `⟨CR⟩` and `⟨CR⟩⟨LF⟩` are not
     guaranteed to be recognized as newlines and thus whitespace. On
     systems conforming to the POSIX standard, they are not treated as
-    whitespace; on Cygwin, `⟨CR⟩⟨LF⟩` might be treated as whitespace,
-    and `⟨LF⟩` might not.
+    newlines; on Cygwin, `⟨CR⟩⟨LF⟩` might be treated as a newline, and
+    `⟨LF⟩` might not.
 
   * For deciding whether a certain character is a Unicode whitespace
     character, the whitespace definition of Unicode 14.0.0 is used.
